@@ -1,0 +1,144 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{lipsum}
+% Set margins to 1.0in top 1.5in other
+\usepackage[left=1.5in, right=1.5in, top=1.0in]{geometry}
+
+% for graphics
+\usepackage{graphicx}
+
+% for palatino text
+\usepackage{palatino}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{setspace}
+
+% setup parameter indentation
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% for 1.26 spacing between text
+\setstretch{1.26}
+
+% For defining spacing between headers
+\usepackage{titlesec}
+% Heading 1
+\titlespacing*{\section}{0pt}{8.5pt}{8.5pt}
+\titleformat{\section}
+  {\normalfont\fontsize{11}{0}\bfseries}{\thesection}{1em}{} 
+
+% Heading 2
+\titlespacing*{\subsection}{0pt}{8.5pt}{8.5pt}
+\titleformat{\subsection}
+  {\normalfont\fontsize{11}{0}\bfseries}{\thesection}{1em}{}
+  
+% Heading 3
+\titlespacing*{\subsubsection}{0pt}{8.5pt}{8.5pt}
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{11}{0}\bfseries\itshape}{\thesection}{1em}{}
+
+% Set caption to correct size and location
+\usepackage[tableposition=top, figureposition=bottom, font=footnotesize, labelfont=bf]{caption}
+
+
+% Hacking the title until it looks close enough
+\makeatletter
+\renewcommand{\maketitle}{\bgroup
+   \begin{center}
+   \begin{spacing}{2.0}
+{\fontsize{17pt}{0}\selectfont \@title}\\
+   \end{spacing}
+   \vspace{4pt}
+   {\fontsize{12pt}{0}\selectfont \@author} 
+	
+   \end{center}
+}
+\makeatother
+
+% Used for Tables and Figures
+\usepackage{float}
+
+% For using lists
+\usepackage{enumitem}
+
+% For using APA Citation format
+\usepackage{apacite}
+
+% Custom Quote
+\newenvironment{myquote}[1]%
+  {\list{}{\leftmargin=#1\rightmargin=#1}\item[]}%
+  {\endlist}
+  
+% Create Abstract 
+\renewenvironment{abstract}
+{\vspace*{-.5in}\fontsize{12pt}{12}\begin{myquote}{.5in}
+\noindent \par{\bfseries \itshape \abstractname ---}}
+{\medskip\noindent
+\end{myquote}
+}
+
+\begin{document}
+
+% Set Title, Author, and email
+\title{Joyner Document Format 2.0:\\
+For Use in CS6460, CS6750, and CS7637
+}
+\author{Author Name \\ username@gatech.edu}
+
+\maketitle
+
+\begin{abstract}
+\lipsum[8]
+\end{abstract}
+
+% Capitalize and add hierarchical numbers manually 
+\section*{1 HEADING}
+\lipsum[1]
+\lipsum[3]
+
+\subsection*{1.1 Heading 2}
+\lipsum[2]
+
+\subsubsection*{1.2 Heading 3}
+\lipsum[3]
+
+\section*{Table Example}
+\lipsum[1] See Table ~\ref{table:1}.
+\begin{table}[H]
+  \begin{center}
+    \caption{Table Caption}
+    \label{table:1}
+    \begin{tabular}{l|c|r}
+      \textbf{Value 1} & \textbf{Value 2} & \textbf{Value 3}\\
+      $\alpha$ & $\beta$ & $\gamma$ \\
+      \hline
+      1 & 1110.1 & a\\
+      2 & 10.1 & b\\
+      3 & 23.113231 & c\\
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\section*{Figure Example}
+\lipsum[1] See Figure ~\ref{fig::1}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in, scale=.5]{example-image}
+\caption{Figure Caption}
+\label{fig::1}
+\end{figure}
+
+\section*{Lists}
+\begin{itemize}[leftmargin=.5in]
+\item Test
+\end{itemize}
+
+\begin{enumerate}[leftmargin=.5in]
+\item test \cite{einstein}
+\end{enumerate}
+
+\bibliographystyle{apacite} 
+\bibliography{bibtemp}
+
+\end{document}
